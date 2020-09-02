@@ -86,7 +86,7 @@ namespace nonius {
                     if(is_valid(value)) {
                         std::forward<Assignment>(assign) (variable, std::move(value));
                     } else {
-                        throw argument_error();
+                        throw argument_error{"Tried to parse invalid value"};
                     }
                 }
             }
@@ -150,12 +150,13 @@ namespace nonius {
                 parse(cfg.verbose, args, "verbose");
                 parse(cfg.summary, args, "summary");
                 parse(cfg.title, args, "title");
-                if(cfg.verbose && cfg.summary) throw argument_error();
+                if(cfg.verbose && cfg.summary)
+                    throw argument_error{"Verbose and summary output are mutually exclusive"};
 
                 return cfg;
             } catch(...) {
                 std::cout << help_text(name, command_line_options());
-                throw argument_error();
+                throw argument_error{"Unexpected catch in argument parsing"};
             }
         }
     } // namespace detail
