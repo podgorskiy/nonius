@@ -1,5 +1,6 @@
 #define NONIUS_RUNNER
 #include <nonius.h++>
+#include <nonius/main.h++>
 
 #include <list>
 #include <forward_list>

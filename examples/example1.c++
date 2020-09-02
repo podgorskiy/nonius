@@ -1,5 +1,6 @@
 #define NONIUS_RUNNER
 #include <nonius.h++>
+#include <nonius/main.h++>
 
 NONIUS_BENCHMARK("to_string(42)", []{
     return std::to_string(42);
